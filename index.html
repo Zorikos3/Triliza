@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Σώσιμο Γής!</title>
+    <style>
+        :root {
+            --background-dark: #2c3e50;
+            --text-light: #ffffff;
+            --accent: #1abc9c;
+            --glass-background: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--background-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        header, footer, section {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px 0;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            background: var(--glass-background);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: 0 4px 10px var(--glass-shadow);
+            transition: background 0.5s, border-color 0.5s;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        header p {
+            font-size: 1.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .audio-section {
+            text-align: center;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        audio {
+            margin: 20px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .qa-section h2, .images-section h2, .book-images-section h2 {
+            color: var(--accent);
+        }
+
+        .qa-item {
+            margin-bottom: 20px;
+        }
+
+        .qa-chart {
+            margin-top: 20px;
+        }
+
+        .images-section, .book-images-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .images-section img, .book-images-section img {
+            max-width: calc(20% - 20px);
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .images-section img:hover, .book-images-section img:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Ώρα να σώσουμε τον πλανήτη μας την Γή!</h1>
+        <p>Ας σώσουμε τον πλανήτη μας, ένα βήμα τη φορά!</p>
+    </header>
+
+    <section class="audio-section">
+        <h2>Ακούστε το Τραγούδι που έφτιαξα για το περιβάλλον</h2>
+        <audio controls>
+            <source src="your-environmental-song.mp4" type="audio/mp4">
+            Ο περιηγητής σας δεν υποστηρίζει το στοιχείο ήχου.
+        </audio>
+    </section>
+
+    <section class="qa-section">
+        <h2>Ερωτήσεις και Απαντήσεις για το Περιβάλλον. (Απάντησαν 50 Μαθητές σε κάθε ερώτηση!)</h2>
+        <ul>
+            <li><strong>Ερώτηση 1:</strong>Ανακύκλωση πλαστικών μπουκαλιών.<br>
+                <strong>Απάντηση:</strong> 28 Ναι | 22 Οχι.<br>
+				<strong></strong>--------------
+            </li>
+            <li><strong>Ερώτηση 2:</strong>Χρήση επαναχρησιμοποιούμενων σακουλών.<br>
+                <strong>Απάντηση:</strong> 32 Ναι | 18 Οχι.<br>
+				<strong></strong>--------------
+            </li>
+            <li><strong>Ερώτηση 3:</strong>Σβήσιμο φώτων.<br>
+                <strong>Απάντηση:</strong> 40 Ναι | 10 Οχι.<br>
+				<strong></strong>--------------
+            </li>
+            <li><strong>Ερώτηση 4:</strong>Κομποστοποίηση.<br>
+                <strong>Απάντηση:</strong> 15 Ναι | 35 Οχι.<br>
+				<strong></strong>--------------
+            </li>
+			<li><strong>Ερώτηση 5:</strong>Καθαρισμοί κοινότητας.<br>
+                <strong>Απάντηση:</strong> 20 Ναι | 30 Οχι.<br>
+				<strong></strong>--------------
+            </li>
+        </ul>
+    </section>
+
+    <section class="qa-section">
+        <h2>Αποτελέσματα Έρευνας για το Περιβάλλον</h2>
+        <canvas id="qaChart" class="qa-chart" width="800" height="400"></canvas>
+    </section>
+
+    <section class="images-section">
+        <h2>Το Περιβάλλον μας σε Εικόνες.</h2>
+        
+        <!-- Image 1 with customizable side title -->
+        <div class="image-container">
+            <img src="image1.png" alt="Εικόνα Περιβάλλοντος 1">
+            <p class="image-title">Ο άνθρωπος και η Θάλασσα..</p>
+        </div>
+        
+        <!-- Image 2 with customizable side title -->
+        <div class="image-container">
+            <img src="image2.png" alt="Εικόνα Περιβάλλοντος 2">
+            <p class="image-title">Ο εξωγίηνος που βλέπει την Γή να καταστρέφεται!</p>
+        </div>
+
+        <!-- Image 3 with customizable side title -->
+        <div class="image-container">
+            <img src="image3.png" alt="Εικόνα Περιβάλλοντος 3">
+            <p class="image-title">Η ζωή μετα το λιόσιμο των πάγων!</p>
+        </div>
+
+        <!-- Image 4 with customizable side title -->
+        <div class="image-container">
+            <img src="image4.png" alt="Εικόνα Περιβάλλοντος 4">
+            <p class="image-title">Το μετά και το πρίν...</p>
+        </div>
+
+        <!-- Image 5 with customizable side title -->
+        <div class="image-container">
+            <img src="image5.png" alt="Εικόνα Περιβάλλοντος 5">
+            <p class="image-title">Οι κεραίες και οι ανεμογενίτριες στο μέλλον!</p>
+        </div>
+
+    </section>
+
+    <section class="book-images-section">
+        <h2>Υπότιτλοι Εικόνων για το Βιβλίο</h2>
+        <img src="BookPicture1.png" alt="Εικόνα Βιβλίου 1">
+        <p>ΠλαγιόΤιτλος: Η κλιματική αλλαγή και οι συνέπειές της. ⛔</p>
+        <img src="BookPicture2.png" alt="Εικόνα Βιβλίου 2">
+        <p>ΠλαγιόΤιτλος: Ο πολιτισμόs μπορεί και να βλάπτη! 🚫</p>
+    </section>
+
+    <footer>
+        <p>Δημιουργήθηκε με ❤️ από τον Ορφέας Γεωργακόπουλος Α2 | Να σώσουμε το περιβάλλον!</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('qaChart').getContext('2d');
+        const qaChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Ανακύκλωση πλαστικών σακουλών',
+                    'Χρήση επαναχρησιμοποιούμενων μπουκαλιών',
+                    'Σβήσιμο φώτων',
+                    'Κομποστοποίηση',
+                    'Καθαρισμοί κοινότητας'
+                ],
+                datasets: [{
+                    label: 'Ναι',
+                    data: [28, 32, 40, 15, 20],
+                    backgroundColor: 'rgba(26, 188, 156, 0.7)',
+                }, {
+                    label: 'Όχι',
+                    data: [22, 18, 10, 35, 30],
+                    backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: 'white'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Αποτελέσματα Έρευνας',
+                        color: 'white'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `${context.dataset.label}: ${context.raw}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Ερωτήσεις',
+                            color: 'white'
+                        },
+                        ticks: {
+                            color: 'white'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Αριθμός Απαντήσεων',
+                            color: 'white'
+                        },
+                        ticks: {
+                            color: 'white'
+                        }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        display: true,
+                        color: 'white',
+                        font: {
+                            weight: 'bold',
+                        },
+                        formatter: (value, context) => {
+                            return `${context.chart.data.labels[context.dataIndex]}: ${value}`;
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
